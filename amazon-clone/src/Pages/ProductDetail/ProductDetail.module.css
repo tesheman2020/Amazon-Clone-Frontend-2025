@@ -1,0 +1,25 @@
+.productDetail {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.productDetail img {
+  max-width: 300px;
+  margin: auto;
+  object-fit: contain;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .productDetail {
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+  }
+}
