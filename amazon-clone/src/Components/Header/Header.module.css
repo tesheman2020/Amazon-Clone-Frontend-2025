@@ -23,7 +23,7 @@
   vertical-align: middle;
 }
 .delivery p {
-  font-size: 10px;
+  font-size: 15px;
 }
 .search {
   display: flex;
@@ -135,4 +135,22 @@
   .language {
     display: none;
   }
+}
+ /* ======= */
+ .cart {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.cartCount {
+  position: absolute;
+  top: -6px;
+  right: -200px;
+  background-color: #f08804;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
 }

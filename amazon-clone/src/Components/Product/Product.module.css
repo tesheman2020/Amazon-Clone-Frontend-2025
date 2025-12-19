@@ -35,9 +35,17 @@
 
 .button:hover {
   background-color: var(--primary-shade);
-   color: #e2876b;
+   color: #ff7950;
    transform: scale(1.03);
 }
+
+/* .flex{
+  box-shadow:none;
+  height:auto;
+  display: flex;
+  gap: 50px;
+  width: 100%;
+} */
 
 @media (hover: hover) {
   .card__container:hover .button {
