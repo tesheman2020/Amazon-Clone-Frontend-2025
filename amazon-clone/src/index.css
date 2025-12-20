@@ -2,27 +2,17 @@
     padding: 0;
     margin: 0;
     font-family: sans-serif;
+   
 }
   
 
 :root{
 --primary-color: #febd69:
 --primary-shad
-}
-* {
-  box-sizing: border-box;
+
 }
 
-/* *,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
 
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-} */
+
+
+

@@ -5,11 +5,19 @@
 .products_container {
   display: grid;
   grid-template-columns: repeat(2, 1fr); 
-  gap: 1rem;
-  padding: 2rem;
-  
-  
+  gap: 3.5rem;
+  padding: 1rem;
+  box-sizing: border-box;
 }
+
+/* .products_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+  width: 100%;
+     box-sizing: border-box;
+} */
 
 
 .card__container {
@@ -50,6 +58,7 @@
   display: flex;
   gap: 50px;
   width: 100%;
+   overflow-x: hidden;
 } */
 
 @media (hover: hover) {
@@ -71,10 +80,12 @@
 @media (min-width: 1024px) {
   .products_container {
     grid-template-columns: repeat(4, 1fr);
+  
   }
 
   .card__container img {
     height: 200px;
+    
   }
 }
 

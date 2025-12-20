@@ -2,10 +2,10 @@
   padding: 0;
   margin: 0;
 }
-.fixed {
+.fixed{
   position: sticky; 
   top: 0;
-  z-index: 100;
+  z-index: 1000;
 }
 .header__container {
   background-color: #1a1a1a;
@@ -14,7 +14,8 @@
   align-items: center;
   color: white;
   height: 70px;
-  /* max-width: 100%; */
+ 
+  max-width: 100%;
 }
 .logo__container {
   display: flex;
@@ -152,8 +153,8 @@
 
 .cartCount {
   position: absolute;
-  top: -6px;
-  right: -200px;
+  top: -8px;
+  right: -6px;
   background-color: #f08804;
   color: white;
   font-size: 12px;
