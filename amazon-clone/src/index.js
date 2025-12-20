@@ -24,4 +24,4 @@ root.render(
 //     </DataProvider>
 //   </React.StrictMode>
 // </BrowserRouter>;
-// basename = "/Amazon-Clone-Frontend-2025";
+

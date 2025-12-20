@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter ,Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router,Routes, Route } from "react-router-dom";
 import Landing from "./Pages/Landing/Landing";
 import SignIn from "./Pages/Auth/Signup";
 import Payment from "./Pages/Payment/Payment";
@@ -9,7 +9,7 @@ import Results from "./Pages/Results/Results";
 import ProductDetail from "./Pages/ProductDetail/ProductDetail";
 function Routing() {
   return (
-    <BrowserRouter>
+    <Router basename="/Amazon-Clone-Frontend-2025">
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/auth" element={<SignIn />} />
@@ -19,7 +19,7 @@ function Routing() {
         <Route path="/products/:productId" element={<ProductDetail />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
 
