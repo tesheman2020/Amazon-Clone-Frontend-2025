@@ -95,7 +95,7 @@ const Header = () => {
   const totalItems = basket.reduce((total, item) => total + item.amount, 0);
 
   return (
-    <>
+    <section className={classes.fixed}>
       <section>
         <div className={classes.header__container}>
           {/* LOGO */}
@@ -159,7 +159,7 @@ const Header = () => {
       </section>
 
       <LowerHeader />
-    </>
+    </section>
   );
 };
 

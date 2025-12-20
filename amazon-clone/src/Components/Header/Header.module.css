@@ -2,6 +2,11 @@
   padding: 0;
   margin: 0;
 }
+.fixed {
+  position: sticky; 
+  top: 0;
+  z-index: 100;
+}
 .header__container {
   background-color: #1a1a1a;
   display: flex;
@@ -9,6 +14,7 @@
   align-items: center;
   color: white;
   height: 70px;
+  /* max-width: 100%; */
 }
 .logo__container {
   display: flex;
@@ -34,6 +40,7 @@
   width: 100%;
   flex: 1;
 }
+
 .search select,
 .search input {
   padding: 10px;
@@ -105,7 +112,6 @@
   border: 1px solid white;
   border-radius: 3px;
 }
-
 .lower__container {
   background-color: #232f3e;
   color: white;
@@ -128,6 +134,7 @@
     display: flex;
     flex-direction: column !important;
     height: auto;
+    /* max-width: 100%; */
   }
   .lower__container ul li:not(:first-child) {
     display: none;
@@ -136,8 +143,8 @@
     display: none;
   }
 }
- /* ======= */
- .cart {
+/* ======= */
+.cart {
   position: relative;
   display: flex;
   align-items: center;
@@ -154,3 +161,5 @@
   padding: 2px 6px;
   border-radius: 50%;
 }
+
+

@@ -1,18 +1,23 @@
 
  /* ===== MOBILE FIRST (default = phone) ===== */
 
+
 .products_container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 📱 1 per row */
+  grid-template-columns: repeat(2, 1fr); 
   gap: 1rem;
   padding: 2rem;
+  
+  
 }
+
 
 .card__container {
   width: 100%;           
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   padding: 10px;
   position: relative;
+  
 }
 
 .card__container img {
@@ -58,6 +63,7 @@
 @media (min-width: 768px) {
   .products_container {
     grid-template-columns: repeat(2, 1fr);
+   
   }
 } 
 
