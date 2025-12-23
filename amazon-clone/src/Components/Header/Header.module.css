@@ -22,6 +22,7 @@
   align-items: center;
   justify-content: center;
   max-width: 250px;
+ 
 }
 .logo__container img {
   width: 80%;
@@ -31,6 +32,8 @@
 }
 .delivery p {
   font-size: 15px;
+  
+
 }
 .search {
   display: flex;
@@ -60,6 +63,7 @@
   padding: 7px;
   background: #febd69;
   color: #1a1a1a;
+  
 }
 .search svg:hover {
   background-color: #d49644;
@@ -71,7 +75,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 450px;
+  max-width: 250px;
   gap: 10px;
 }
 .order__container a {

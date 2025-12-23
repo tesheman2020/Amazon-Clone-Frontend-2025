@@ -7,8 +7,9 @@
 .login img {
   margin: 5px auto;
   object-fit: contain;
-  width: 100%;
-  gap: 6px;
+  width: 130px;
+  gap: 5px;
+
 }
 .login__container {
   width: 350px;

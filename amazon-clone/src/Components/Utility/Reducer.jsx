@@ -13,7 +13,7 @@ const reducer = (state, action) => {
       // Check if item already exists
       const existingItem = state.basket.find((i) => i.id === item.id);
 
-      if (existingItem) {
+      if (!existingItem) {
         // increment quantity
         return {
           ...state,
