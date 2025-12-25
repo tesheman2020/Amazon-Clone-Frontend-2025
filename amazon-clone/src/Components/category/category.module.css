@@ -41,6 +41,7 @@
   .category__container {
     grid-template-columns: repeat(2, 1fr); /* 2 per row */
     gap: 1.5rem;
+    
   }
 
   .category img {

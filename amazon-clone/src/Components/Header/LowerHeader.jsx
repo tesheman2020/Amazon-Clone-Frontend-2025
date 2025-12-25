@@ -5,7 +5,7 @@ function LowerHeader() {
   return (
     <div className={classes.lower__container}>
           <ul>
-              <li>
+              <li className={classes.lower__container_all}>
                   <AiOutlineMenu />
                   <p>All</p>
               </li>
