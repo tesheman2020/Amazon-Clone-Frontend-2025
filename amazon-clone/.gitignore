@@ -1,0 +1,6 @@
+node_modules/
+build/
+backup-repo.git/
+functions/backup-repo.git/
+functions/.env
+.env

@@ -1,0 +1,13 @@
+node_modules/
+*.local
+.env.env
+# Node and build
+node_modules/
+build/
+
+# Environment
+*.env
+
+# Backup or nested repos
+backup-repo.git
+functions/backup-repo.git
