@@ -1,4 +1,3 @@
-
 import React, { useContext } from "react";
 import classes from "./Cart.module.css";
 import LayOut from "../../Components/LayOut/LayOut";
@@ -6,10 +5,20 @@ import { DataContext } from "../../Components/DataProvider/DataProvider";
 import { Type } from "../../Components/Utility/action.Type";
 import ProductCard from "../../Components/Product/ProductCard";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 function Cart() {
   const { state, dispatch } = useContext(DataContext);
   const { basket, user } = state;
+  const navigate = useNavigate();
+
+  /* ✅ SUBTOTAL CALCULATION */
+  const totalItems = basket.reduce((sum, item) => sum + item.amount, 0);
+
+  const subtotal = basket.reduce(
+    (sum, item) => sum + item.price * item.amount,
+    0
+  );
 
   const increment = (item) => {
     dispatch({
@@ -25,24 +34,6 @@ function Cart() {
     });
   };
 
-  // const total = basket.reduce(
-  //   (amount, item) => amount + item.price * item.amount,
-  //   0
-  // );
-
-  // const total = basket.reduce((amount, item) => {
-  //   const price = Number(item.price) || 0;
-  //   const qty = Number(item.amount) || 1;
-  //   return amount + price * qty;
-  // }, 0);
-const total = basket.reduce((sum, item) => sum + item.price * item.amount, 0);
-
-
-// const total = basket.reduce((sum, item) => {
-//   const price = Number(item.price.replace("$", ""));
-//   return sum + price * item.amount;
-// }, 0);
-
   return (
     <LayOut>
       <section className={classes.container}>
@@ -56,12 +47,14 @@ const total = basket.reduce((sum, item) => sum + item.price * item.amount, 0);
           ) : (
             basket.map((item) => (
               <section key={item.id} className={classes.cartItem}>
-                <ProductCard
-                  product={item}
-                  renderDesc={true}
-                  renderAddBtn={false}
-                  flex={true}
-                />
+                <div className={classes.cartContent}>
+                  <ProductCard
+                    product={item}
+                    renderDesc={true}
+                    renderAddBtn={false}
+                    flex={true}
+                  />
+                </div>
 
                 <div className={classes.itembtn}>
                   <button onClick={() => increment(item)}>
@@ -78,17 +71,23 @@ const total = basket.reduce((sum, item) => sum + item.price * item.amount, 0);
             ))
           )}
         </div>
+        <aside className={classes.subtotalBox}>
+          <p>
+            Subtotal ({totalItems} {totalItems === 1 ? "item" : "items"}):
+            <strong> ${subtotal.toFixed(2)}</strong>
+          </p>
 
-        <div className={classes.totalBox}>
-          <h3>Total: ${total.toFixed(2)}</h3>
-        </div>
+          <button
+            disabled={basket.length === 0}
+            onClick={() => navigate("/payments")}
+            className={classes.checkoutBtn}
+          >
+            Proceed to Checkout
+          </button>
+        </aside>
       </section>
     </LayOut>
   );
 }
 
 export default Cart;
-
-
-
-

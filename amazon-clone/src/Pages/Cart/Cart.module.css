@@ -1,0 +1,169 @@
+.container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* LEFT */
+.Cart__container {
+  flex: 1;
+}
+.Cart__container h2 {
+  margin-bottom: 5px;
+}
+
+.Cart__container h3 {
+  margin-bottom: 15px;
+}
+
+/* RIGHT SUBTOTAL */
+.subtotalBox {
+  width: 300px;
+  height: fit-content;
+  border: 1px solid lightgray;
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.checkoutBtn {
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  background-color: #f0c14b;
+  border-radius: 4px;
+}
+
+.checkoutBtn:hover {
+  background-color: #ddb347;
+}
+
+.checkoutBtn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+.cartItem {
+  display: flex;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid #e0e0e0;
+  align-items: flex-start;
+}
+
+.cartItem img {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+}
+.cartItem > div {
+  flex: 1;
+  min-width: 0;
+}
+.cartItem p {
+  margin: 6px 0;
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+.itembtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-left: 10px;
+}
+
+.itembtn button {
+  border: 1px solid #d5d9d9;
+  background-color: white;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 3px;
+}
+
+.itembtn button:hover {
+  background-color: #f7fafa;
+}
+
+.amount {
+  font-weight: bold;
+  padding: 4px 0;
+}
+.cartItem p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* limit lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .cartContent img {
+    order: 1;
+    margin: 0 auto;
+  }
+
+  .cartContent h3 {
+    order: 2;
+    margin-top: 10px;
+  }
+
+  .cartContent p {
+    order: 3;
+    display: block;
+    width: 100%;
+  }
+  .container {
+    flex-direction: column;
+  }
+  .cartItem {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 18px 0;
+  }
+
+  /* Image centered */
+  .cartItem img {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    margin: 0 auto;
+    display: block;
+  }
+
+  /* Product text */
+  .cartItem > div {
+    /* text-align: left; */
+    width: 100%;
+    display: block;
+  }
+
+  /* Description spacing */
+  .cartItem p {
+    display: block; /* 🔥 BLOCK DISPLAY */
+    width: 100%;
+    margin-top: 8px;
+    line-height: 1.5;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  /* Quantity buttons BELOW content */
+  .itembtn {
+    flex-direction: row;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  .itembtn button {
+    padding: 8px;
+  }
+
+  .subtotalBox {
+    width: 10%;
+  }
+}
