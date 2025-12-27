@@ -7,6 +7,13 @@ import Orders from "./Pages/Orders/Orders";
 import Cart from "./Pages/Cart/Cart";
 import Results from "./Pages/Results/Results";
 import ProductDetail from "./Pages/ProductDetail/ProductDetail";
+// import { CheckoutProvider } from "@stripe/react-stripe-js/checkout";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+const stripePromise = loadStripe(
+  "pk_test_51SiBplBmFWlOTwBQOyst96ko1CoTjnokg9PIkFejjBqVMoy3nXwKfocaSGP7KusJ0Y2kYRxVOPCy3QorJZtmS5w400iswMvDP1 "
+);
+
 // import Account from "./Pages/Account/Account";
 
 function Routing() {
@@ -18,7 +25,14 @@ function Routing() {
         path="/account"
         element={<div>Welcome to your Account Page</div>}
       />
-      <Route path="/payments" element={<Payment />} />
+      <Route
+        path="/payments"
+        element={
+          <Elements stripe={stripePromise}>
+            <Payment />
+          </Elements>
+        }
+      />
       <Route path="/orders" element={<Orders />} />
       <Route path="/category/:categoryName" element={<Results />} />
       <Route path="/products/:productId" element={<ProductDetail />} />
@@ -29,29 +43,4 @@ function Routing() {
 
 export default Routing;
 
-// import React from "react";
-// import { BrowserRouter as Router,Routes, Route } from "react-router-dom";
-// import Landing from "./Pages/Landing/Landing";
-// import SignIn from "./Pages/Auth/Signup";
-// import Payment from "./Pages/Payment/Payment";
-// import Orders from "./Pages/Orders/Orders";
-// import Cart from "./Pages/Cart/Cart";
-// import Results from "./Pages/Results/Results";
-// import ProductDetail from "./Pages/ProductDetail/ProductDetail";
-// function Routing() {
-//   return (
-//     <Router basename="/Amazon-Clone-Frontend-2025">
-//       <Routes>
-//         <Route path="/" element={<Landing />} />
-//         <Route path="/auth" element={<SignIn />} />
-//         <Route path="/payments" element={<Payment />} />
-//         <Route path="/orders" element={<Orders />} />
-//         <Route path="/category/:categoryName" element={<Results />} />
-//         <Route path="/products/:productId" element={<ProductDetail />} />
-//         <Route path="/cart" element={<Cart />} />
-//       </Routes>
-//     </Router>
-//   );
-// }
 
-// export default Routing;
