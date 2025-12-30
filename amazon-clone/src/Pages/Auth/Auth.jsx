@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import classes from "./SignUp.module.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { auth } from "../../Components/Utility/firebase.js";
 import {
   signInWithEmailAndPassword,
@@ -20,7 +20,10 @@ function Auth() {
     signUp: false,
   });
 
-const navigate = useNavigate()
+  const navigate = useNavigate();
+  const navStateData = useLocation();
+  console.log(navStateData);
+
   const authHandler = (e) => {
     e.preventDefault();
     setError(""); // ✅ CLEAR OLD ERRORS FIRST
@@ -34,7 +37,7 @@ const navigate = useNavigate()
           console.log("Sign In Successful:", userInfo.user); // Success Log
           dispatch({ type: Type.SET_USER, user: userInfo.user });
           setLoading({ ...loading, signIn: false });
-          navigate("/");
+          navigate(navStateData?.state?.redirect || "/");
         })
         .catch((err) => {
           // console.error("Sign In Error:", err.message); // Error Log
@@ -51,7 +54,7 @@ const navigate = useNavigate()
 
           setError(""); // ✅ CLEAR AGAIN ON SUCCESS
           setLoading({ ...loading, signUp: false });
-           navigate("/");
+          navigate(navStateData?.state?.redirect || "/");
         })
         .catch((err) => {
           console.error(err.message); // Error Log
@@ -72,6 +75,18 @@ const navigate = useNavigate()
 
       <div className={classes.login__container}>
         <h1>Sign In</h1>
+        {navStateData?.state?.msg && (
+          <small
+            style={{
+              padding: "5px",
+              textAlign: "center",
+              color: "red",
+              fontWeight: "bold",
+            }}
+          >
+            {navStateData?.state?.msg}
+          </small>
+        )}
         <form>
           <div>
             <label htmlFor="email">Email</label>
@@ -137,5 +152,3 @@ const navigate = useNavigate()
 }
 
 export default Auth;
-
-

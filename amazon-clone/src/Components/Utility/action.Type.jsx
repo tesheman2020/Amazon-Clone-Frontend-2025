@@ -3,5 +3,6 @@ export const Type = {
   REMOVE_FROM_BASKET: "REMOVE_FROM_BASKET",
   USER: "USER",
   USER_INFO: "USER_INFO",
+  EMPTY_BASKET: "EMPTY_BASKET",
 };
 

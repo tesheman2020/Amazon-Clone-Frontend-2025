@@ -15,6 +15,24 @@
 .Cart__container h3 {
   margin-bottom: 15px;
 }
+.giftOption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0;
+  font-size: 14px;
+}
+
+.giftOption input {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.giftOption label {
+  cursor: pointer;
+  user-select: none;
+}
 
 /* RIGHT SUBTOTAL */
 .subtotalBox {
@@ -47,15 +65,15 @@
 }
 .cartItem {
   display: flex;
-  gap: 16px;
-  padding: 16px 0;
+  gap: 20px;
+  padding: 20px 0;
   border-bottom: 1px solid #e0e0e0;
   align-items: flex-start;
 }
 
 .cartItem img {
-  width: 180px;
-  height: 180px;
+  width: 160px !important;
+  height: 160px;
   object-fit: contain;
 }
 .cartItem > div {
@@ -99,8 +117,12 @@
   overflow: hidden;
 }
 
+
 /* MOBILE */
 @media (max-width: 768px) {
+  .cartContent {
+    width: 100%;
+  }
   .cartContent img {
     order: 1;
     margin: 0 auto;
@@ -122,7 +144,7 @@
   .cartItem {
     flex-direction: column;
     align-items: stretch;
-    gap: 12px;
+    /* gap: 12px; */
     padding: 18px 0;
   }
 
@@ -132,12 +154,11 @@
     height: 140px;
     object-fit: contain;
     margin: 0 auto;
-    display: block;
+    display: flex;
   }
 
-  /* Product text */
-  .cartItem > div {
-    /* text-align: left; */
+  Product text .cartItem > div {
+    text-align: left;
     width: 100%;
     display: block;
   }
@@ -164,6 +185,7 @@
   }
 
   .subtotalBox {
-    width: 10%;
+    width: 100%;
+    margin-top: 20px;
   }
 }

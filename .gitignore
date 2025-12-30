@@ -1,0 +1,13 @@
+# Firebase / Emulator logs
+firebase-debug.log
+firestore-debug.log
+
+# Emulator scripts
+start-emulators.sh
+
+# Node
+node_modules/
+
+# Environment files
+.env
+.env.local
