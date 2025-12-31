@@ -1,108 +1,78 @@
 .category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   height: 250px;
-  width: 250px;
+  width: 100%;
   background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 2);
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
+.category:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
 .category img {
   width: 100%;
-  object-fit: contain;
   max-height: 150px;
-  padding: 0px 10px;
+  object-fit: contain;
+  padding: 10px;
 }
+
 .category a {
   text-decoration: none;
-  color: rgba(35, 35, 35);
+  color: rgb(35, 35, 35);
+  width: 100%;
 }
-.category h2,
-.category p {
-  padding: 5px;
-  margin-left: 15px;
+
+.category h2 {
+  font-size: 18px;
+  padding: 5px 10px;
+  text-align: center;
 }
+
 .category p {
   font-size: 12px;
   font-weight: bold;
   color: rgb(9, 132, 209);
+  padding: 5px;
+  text-align: center;
 }
+
 .category__container {
-  position: relative;
-  /* margin-top: -10%; */
   display: grid;
-  margin-top: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr) 1fr);
+  place-items: center;
+
   gap: 50px;
   max-width: 1600px;
-  place-items: center;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
+
 @media (min-width: 576px) {
   .category__container {
-    grid-template-columns: repeat(2, 1fr); /* 2 per row */
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
 
   .category img {
-    height: 180px;
+    max-height: 180px;
   }
 }
-@media (min-width: 1024px) {
-  .category__container {
-    grid-template-columns: repeat(4, 1fr); /* 4 per row */
-  }
-
-  .category img {
-    height: 200px;
-  }
-}
-/* got the following for responsive page but needs work */
-/* .category__container {
-  display: grid;
-  grid-template-columns: 1fr; 
-  padding: 1rem;
-}
-
-.category {
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  text-align: center;
-}
-
-.category img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  display: block;
-}
-
-.category h2 {
-  font-size: 1.1rem;
-  margin: 0.5rem 0;
-}
-
-.category p {
-  font-size: 0.9rem;
-  color: #555;
-  margin-bottom: 0.5rem;
-}
-
-
-@media (min-width: 600px) {
-  .category__container {
-    grid-template-columns: repeat(2, 1fr); 
-  }
-
-  .category img {
-    height: 120px;
-  }
-}
-
 
 @media (min-width: 1024px) {
   .category__container {
-    grid-template-columns: repeat(4, 1fr); 
+    grid-template-columns: repeat(4, 1fr);
+  }
+
   .category img {
-    height: 200px;
+    max-height: 200px;
   }
 }
-} */
