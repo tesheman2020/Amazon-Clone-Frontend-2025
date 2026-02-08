@@ -12,7 +12,7 @@ import { collection, doc, setDoc } from "firebase/firestore";
 import { Type } from "../../Components/Utility/action.Type";
 
 function Payment() {
-  const { user, basket , dispatch} = useContext(DataContext);
+  const { user, basket, dispatch } = useContext(DataContext);
 
   const stripe = useStripe();
   const elements = useElements();
@@ -23,7 +23,7 @@ function Payment() {
   const totalItems = basket?.reduce((amount, item) => amount + item.amount, 0);
   const total = basket?.reduce(
     (sum, item) => sum + item.price * item.amount,
-    0
+    0,
   );
 
   const handleChange = (e) => {
@@ -38,7 +38,7 @@ function Payment() {
 
       // 1️⃣ Get client secret from backend
       const response = await axiosInstance.post(
-        `/payment/create?total=${Math.round(total * 100)}`
+        `/payment/create?total=${Math.round(total * 100)}`,
       );
 
       const clientSecret = response.data?.clientSecret;
@@ -66,7 +66,7 @@ function Payment() {
       // 3️⃣ Save order to Firestore
       const orderRef = doc(
         collection(db, "users", user.uid, "orders"),
-        paymentIntent.id
+        paymentIntent.id,
       );
       await setDoc(orderRef, {
         basket: basket,
@@ -79,7 +79,7 @@ function Payment() {
     } catch (error) {
       console.error(
         "Error fetching client secret or processing payment:",
-        error
+        error,
       );
       setProcessing(false);
     }
@@ -164,6 +164,181 @@ function Payment() {
 }
 
 export default Payment;
+
+// import React, { useContext, useState } from "react";
+// import classes from "./Payment.module.css";
+// import LayOut from "../../Components/LayOut/LayOut";
+// import { DataContext } from "../../Components/DataProvider/DataProvider";
+// import ProductCard from "../../Components/Product/ProductCard";
+// import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
+// import { NumericFormat } from "react-number-format";
+// import { axiosInstance } from "../../Api/axios";
+// import ClipLoader from "react-spinners/ClipLoader";
+// import { db } from "../../Components/Utility/firebase";
+// import { collection, doc, setDoc } from "firebase/firestore";
+// import { Type } from "../../Components/Utility/action.Type";
+// import { useNavigate } from "react-router-dom";
+
+// function Payment() {
+//   const navigate = useNavigate();
+//   const { user, basket, dispatch } = useContext(DataContext);
+
+//   const stripe = useStripe();
+//   const elements = useElements();
+
+//   const [cardError, setCardError] = useState("");
+//   const [processing, setProcessing] = useState(false);
+
+//   const totalItems = basket?.reduce((amount, item) => amount + item.amount, 0);
+//   const total = basket?.reduce(
+//     (sum, item) => sum + item.price * item.amount,
+//     0,
+//   );
+
+//   const handleChange = (e) => {
+//     setCardError(e.error ? e.error.message : "");
+//   };
+
+//   // if (processing) return;
+
+//   const handlePayment = async (e) => {
+//     e.preventDefault();
+
+//     try {
+//       setProcessing(true);
+
+//       // 1️⃣ Get client secret from backend
+//       const response = await axiosInstance.post(
+//         `/payment/create?total=${Math.round(total * 100)}`,
+//       );
+
+//       const clientSecret = response.data?.clientSecret;
+//       console.log("CLIENT SECRET:", clientSecret);
+//       if (!clientSecret)
+//         throw new Error("Client secret not returned from backend");
+
+//       // 2️⃣ Confirm payment on Stripe
+//       const confirmation = await stripe.confirmCardPayment(clientSecret, {
+//         payment_method: {
+//           card: elements.getElement(CardElement),
+//         },
+//       });
+
+//       if (confirmation.error) {
+//         setCardError(confirmation.error.message);
+//         setProcessing(false);
+//         return;
+//       }
+// if (!user?.uid) {
+//   throw new Error("User not authenticated");
+// }
+
+//       const paymentIntent = confirmation.paymentIntent;
+
+//       console.log("Payment succeeded:", paymentIntent);
+
+//       // 3️⃣ Save order to Firestore
+//       const orderRef = doc(
+//         collection(db, "users", user.uid, "orders"),
+//         paymentIntent.id,
+//       );
+//       await setDoc(orderRef, {
+//         basket: basket,
+//         amount: paymentIntent.amount,
+//         created: paymentIntent.created,
+//       });
+//       // empty the basket
+//       dispatch({ type: Type.EMPTY_BASKET });
+//       setProcessing(false);
+//       navigate("/orders", { replace: true });
+//     } catch (error) {
+//       console.error(
+//         "Error fetching client secret or processing payment:",
+//         error,
+//       );
+//       setProcessing(false);
+//     }
+//   };
+
+//   return (
+//     <LayOut>
+//       <div className={classes.payment__header}>
+//         Checkout ({totalItems}) items
+//       </div>
+
+//       <section className={classes.payment}>
+//         {/* Delivery Address */}
+//         <div className={classes.flex}>
+//           <h3>Delivery Address</h3>
+//           <div>
+//             <div>{user?.email || "Guest"}</div>
+//             <div>1122 Array Avenue</div>
+//             <div>Philadelphia, PA, USA</div>
+//           </div>
+//         </div>
+
+//         <hr />
+
+//         {/* Review Items */}
+//         <div className={classes.flex}>
+//           <h3>Review items and delivery</h3>
+//           <div>
+//             {basket?.map((item) => (
+//               <ProductCard key={item.id} product={item} flex />
+//             ))}
+//           </div>
+//         </div>
+
+//         <hr />
+
+//         {/* Payment Method */}
+//         <div className={classes.flex}>
+//           <h3>Payment Method</h3>
+//           <div className={classes.payment__card__container}>
+//             <div className={classes.payment__details}>
+//               <form onSubmit={handlePayment}>
+//                 <CardElement onChange={handleChange} />
+//                 {cardError && (
+//                   <small className={classes.error}>{cardError}</small>
+//                 )}
+//                 <div className={classes.payment__price}>
+//                   <div>
+//                     <span>
+//                       Total Order |{" "}
+//                       <NumericFormat
+//                         value={total}
+//                         displayType="text"
+//                         thousandSeparator
+//                         prefix="$"
+//                         renderText={(value) => <strong>{value}</strong>}
+//                       />
+//                     </span>
+//                   </div>
+
+//                   <button
+//                     type="submit"
+//                     disabled={!stripe || !elements || processing}
+//                   >
+//                     {processing ? (
+//                       <div className={classes.loading}>
+//                         <ClipLoader color="gray" size={12} />
+//                         <p>Please wait...</p>
+//                       </div>
+//                     ) : (
+//                       " Pay Now"
+//                     )}
+//                   </button>
+//                 </div>
+//               </form>
+//             </div>
+//           </div>
+//         </div>
+//       </section>
+//     </LayOut>
+//   );
+// }
+
+// export default Payment;
 
 // import React, { useContext, useState } from "react";
 // import classes from "./Payment.module.css";

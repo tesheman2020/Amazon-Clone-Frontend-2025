@@ -11,7 +11,7 @@ import { DataContext } from "../../Components/DataProvider/DataProvider";
 import { Type } from "../../Components/Utility/action.Type.jsx";
 
 function Auth() {
-  const { state, dispatch } = useContext(DataContext);
+  const {  dispatch } = useContext(DataContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
