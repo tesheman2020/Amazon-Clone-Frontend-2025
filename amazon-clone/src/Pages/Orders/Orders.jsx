@@ -2,18 +2,13 @@ import React, { useContext, useState, useEffect } from "react";
 import classes from "./Orders.module.css";
 import LayOut from "../../Components/LayOut/LayOut";
 import { DataContext } from "../../Components/DataProvider/DataProvider";
-import {
-  collection,
-  // doc,
-  query,
-  orderBy,
-  onSnapshot,
-} from "firebase/firestore";
+import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
 import { db } from "../../Components/Utility/firebase";
 import ProductCard from "../../Components/Product/ProductCard";
+import { Type } from "../../Components/Utility/action.Type";
 
 function Orders() {
-  const { user } = useContext(DataContext);
+  const { user, dispatch } = useContext(DataContext);
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
@@ -34,28 +29,75 @@ function Orders() {
     return unsubscribe;
   }, [user]);
 
+  const formatCurrency = (amount) =>
+    new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(amount);
+
+  // ✅ Add single quantity to basket
+  const addToCartSingle = (item) => {
+    dispatch({
+      type: Type.ADD_TO_BASKET,
+      item: { ...item, amount: 1 }, // always add 1
+    });
+  };
+
   return (
     <LayOut>
       <section className={classes.container}>
         <div className={classes.orders__container}>
           <h2>Your Orders</h2>
-          {/* ordered items */}
-          {orders?.length === 0 && (
-            <div style={{ padding: "20px" }}>You don't have orders yet.</div>
-          )}
-          {/* ordered items */}
-          <div>
-            {orders.map((eachOrder) => (
-              <div key={eachOrder.id}>
-                <hr />
-                <p>Order ID: {eachOrder.id}</p>
 
-                {eachOrder.basket?.map((item) => (
-                  <ProductCard key={item.id} product={item} flex={true} />
+          {orders.length === 0 && (
+            <p style={{ padding: "20px" }}>You don't have any orders yet.</p>
+          )}
+
+          {orders.map((order) => {
+            const orderTotal = order.basket.reduce(
+              (sum, item) => sum + item.price * item.amount,
+              0,
+            );
+
+            return (
+              <div key={order.id} className={classes.order}>
+                <hr />
+                <p>
+                  <strong>Order ID:</strong> {order.id}
+                </p>
+
+                {order.basket.map((item) => (
+                  <div key={item.id} style={{ marginBottom: "12px" }}>
+                    {/* ✅ Disable internal Add to Cart button */}
+                    <ProductCard
+                      product={item}
+                      flex={true}
+                      renderAddBtn={false}
+                    />
+
+                    <p style={{ marginLeft: "10px" }}>
+                      Qty: <strong>{item.amount}</strong> | Subtotal:{" "}
+                      <strong>
+                        {formatCurrency(item.price * item.amount)}
+                      </strong>
+                    </p>
+
+                    {/* ✅ Orders page Add to Cart button */}
+                    <button
+                      onClick={() => addToCartSingle(item)}
+                      className={`${classes.add_to_cart} ${classes.orders_add}`}
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
                 ))}
+
+                <h3 style={{ textAlign: "right", marginTop: "10px" }}>
+                  Order Total: <strong>{formatCurrency(orderTotal)}</strong>
+                </h3>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </section>
     </LayOut>
@@ -63,120 +105,3 @@ function Orders() {
 }
 
 export default Orders;
-
-// import React, { useContext, useState, useEffect } from "react";
-// import classes from "./Orders.module.css";
-// import LayOut from "../../Components/LayOut/LayOut";
-// import { DataContext } from "../../Components/DataProvider/DataProvider";
-// import {
-//   collection,
-//   doc,
-//   query,
-//   orderBy,
-//   onSnapshot,
-// } from "firebase/firestore";
-// import { db } from "../../Components/Utility/firebase";
-// import ProductCard from "../../Components/Product/ProductCard";
-
-// function Orders() {
-//   const { user } = useContext(DataContext);
-//   const [orders, setOrders] = useState([]);
-
-//   useEffect(() => {
-//     // if (!user) return;
-//     if (!user?.uid) {
-//       setOrders([]);
-//       return;
-//     }
-
-//     const ordersRef = collection(db, "users", user.uid, "orders");
-//     const q = query(ordersRef, orderBy("created", "desc"));
-
-//     const unsubscribe = onSnapshot(
-//       q,
-//       (snapshot) => {
-//         setOrders(
-//           snapshot.docs.map((doc) => ({
-//             id: doc.id,
-//             ...doc.data(),
-//           })),
-//         );
-//       },
-//       (error) => {
-//         console.error("Orders listener error:", error);
-//       },
-//     );
-
-//     // return unsubscribe;
-//     return () => unsubscribe();
-//   }, [user]);
-
-//   return (
-//     <LayOut>
-//       <section className={classes.container}>
-//         <div className={classes.orders__container}>
-//           <h2>Your Orders</h2>
-//           {/* ordered items */}
-//           {orders?.length === 0 && (
-//             <div style={{ padding: "20px" }}>You don't have orders yet.</div>
-//           )}
-//           {/* ordered items */}
-//           <div>
-//             {orders.map((eachOrder) => (
-//               <div key={eachOrder.id}>
-//                 <hr />
-//                 <p>Order ID: {eachOrder.id}</p>
-
-//                 {eachOrder.basket?.map((item) => (
-//                   <ProductCard key={item.id} product={item} flex={true} />
-//                 ))}
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       </section>
-//     </LayOut>
-//   );
-// }
-
-// export default Orders;
-
-// import React, { useContext, useState, useEffect } from "react";
-// import classes from "./Orders.module.css";
-// import LayOut from "../../Components/LayOut/LayOut";
-// import { db } from "../../Components/Utility/firebase";
-// import { DataContext } from "../../Components/DataProvider/DataProvider";
-// import { getFirestore, collection, query, orderBy, onSnapshot } from "firebase/firestore";
-// import { app } from "./firebase"; // your firebase config
-
-// function Orders() {
-//   const { user, dispatch } = useContext(DataContext);
-//   const [orders, setOrders] = useState([]);
-//   const db = getFirestore(app);
-
-//   useEffect(() => {
-//     if (user) {
-//       db.collection("users")
-//         .doc(user.uid)
-//         .collection("orders")
-//         .orderBy("created", "desc")
-//         .onSnapShot((snapshot) => {
-//           console.log(snapshot);
-//         });
-//     } else {
-//     }
-//   }, []);
-
-//   return (
-//     <LayOut>
-//       <section className={classes.container}>
-//         <div className={classes.orders__container}>
-//           <h2>Your Orders</h2>
-//           {/* ordered items */}
-//         </div>
-//       </section>
-//     </LayOut>
-//   );
-// }
-
-// export default Orders;

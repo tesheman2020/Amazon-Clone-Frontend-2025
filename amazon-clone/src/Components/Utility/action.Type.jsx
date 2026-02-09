@@ -4,5 +4,5 @@ export const Type = {
   USER: "USER",
   USER_INFO: "USER_INFO",
   EMPTY_BASKET: "EMPTY_BASKET",
+  SET_AMOUNT: "SET_AMOUNT",
 };
-

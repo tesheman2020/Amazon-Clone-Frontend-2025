@@ -1,22 +1,149 @@
+/* Existing Orders CSS */
 .container {
-background-color: #efeeee;
-padding: 30px;
+  background-color: #efeeee;
+  padding: 30px;
 }
-.orders__container {
-background-color: #fff;
-padding: 20px;
-}
-.orders__container h2 {
-border-bottom: 2px solid var(--primary-shade);
-padding: 20px;
 
+.orders__container {
+  background-color: #fff;
+  padding: 20px;
 }
+
+.orders__container h2 {
+  border-bottom: 2px solid var(--primary-shade);
+  padding: 20px;
+}
+
 .orders__container p {
-padding: 12px;
+  padding: 12px;
 }
+
 .orders__container img {
-    width: 100px !important;
+  width: 100px !important;
 }
+
 .orders__container div {
-    height: auto !important;
+  height: auto !important;
 }
+
+/* ==================== INLINE QTY + ADD TO CART ==================== */
+.qty-add {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.qty-add input[type="number"] {
+  width: 60px;        /* Decreased width */
+  height: 35px;       /* Increased height */
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  text-align: center;
+}
+
+.qty-add button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 30px;
+  background-color: var(--primary-color);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.qty-add button:hover {
+  background-color: var(--primary-shade);
+  transform: scale(1.03);
+}
+
+.subtotal-text {
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.order-total {
+  text-align: right;
+  margin-top: 10px;
+}
+
+/* Add to Cart button in orders page */
+.add_to_cart_orders {
+  background-color: #ff9900; /* Amazon-style orange */
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+/* Add to Cart button styling in Orders page */
+.orders_add {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 8px;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-weight: 700;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.orders_add:hover {
+  background-color: var(--primary-shade);
+  color: #ff7950;
+  transform: scale(1.03);
+}
+
+.add_to_cart_orders:hover {
+  background-color: #f08804; /* slightly darker on hover */
+  transform: scale(1.03);
+}
+
+/* ==================== MOBILE RESPONSIVE ==================== */
+@media (max-width: 576px) {
+  .container {
+    padding: 15px;
+  }
+
+  .orders__container {
+    padding: 12px;
+  }
+
+  .orders__container h2 {
+    padding: 10px;
+    font-size: 18px;
+  }
+
+  .orders__container p {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .orders__container img {
+    width: 70px !important;
+  }
+
+  /* Adjust inline qty + button for small screens */
+  .qty-add {
+    gap: 5px;
+  }
+
+  .qty-add input[type="number"] {
+    width: 50px;
+    height: 30px;
+    font-size: 14px;
+  }
+
+  .qty-add button {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+}
+

@@ -1,3 +1,4 @@
+
 .payment__header {
   padding: 20px;
   text-align: center;
@@ -34,6 +35,32 @@
   font-size: 16px;
   gap: 10px;
 }
+/* Pay Now button */
+.pay_button {
+  background-color: #ff9900; /* Amazon-style orange */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  margin-top: 12px;
+}
+
+.pay_button:hover {
+  background-color: #f08804; /* slightly darker on hover */
+  transform: scale(1.03);
+}
+
+.pay_button:disabled {
+  background-color: #ffd699;
+  cursor: not-allowed;
+  transform: none;
+}
+
+
 .payment__details button {
   margin-top: 15px;
   width: 100%;
@@ -52,3 +79,12 @@
     flex-direction: column;
   }
 }
+
+
+
+
+
+
+
+
+
