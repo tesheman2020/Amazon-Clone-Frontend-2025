@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/Amazon-Clone-Frontend-2025/static/css/main.c056b7c4.css",
-    "main.js": "/Amazon-Clone-Frontend-2025/static/js/main.fc5a929e.js",
+    "main.css": "/Amazon-Clone-Frontend-2025/static/css/main.9fdffc7b.css",
+    "main.js": "/Amazon-Clone-Frontend-2025/static/js/main.43c1fb45.js",
     "static/media/10001.jpg": "/Amazon-Clone-Frontend-2025/static/media/10001.2f5cc63b7e4512dd2789.jpg",
     "static/media/10005.jpg": "/Amazon-Clone-Frontend-2025/static/media/10005.4d36865f92d63b2519a7.jpg",
     "static/media/10003.jpg": "/Amazon-Clone-Frontend-2025/static/media/10003.16272162b96e28f935c4.jpg",
     "static/media/10004.jpg": "/Amazon-Clone-Frontend-2025/static/media/10004.805821d23a3f63566f17.jpg",
     "static/media/10002.jpg": "/Amazon-Clone-Frontend-2025/static/media/10002.225aaef918f59e5de14a.jpg",
     "index.html": "/Amazon-Clone-Frontend-2025/index.html",
-    "main.c056b7c4.css.map": "/Amazon-Clone-Frontend-2025/static/css/main.c056b7c4.css.map",
-    "main.fc5a929e.js.map": "/Amazon-Clone-Frontend-2025/static/js/main.fc5a929e.js.map"
+    "main.9fdffc7b.css.map": "/Amazon-Clone-Frontend-2025/static/css/main.9fdffc7b.css.map",
+    "main.43c1fb45.js.map": "/Amazon-Clone-Frontend-2025/static/js/main.43c1fb45.js.map"
   },
   "entrypoints": [
-    "static/css/main.c056b7c4.css",
-    "static/js/main.fc5a929e.js"
+    "static/css/main.9fdffc7b.css",
+    "static/js/main.43c1fb45.js"
   ]
 }
