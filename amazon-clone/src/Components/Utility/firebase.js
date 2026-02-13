@@ -1,14 +1,13 @@
-// Import the functions you need
+// src/Components/Utility/firebase.js
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import {
   getAuth,
   setPersistence,
   browserLocalPersistence,
 } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import { getAnalytics } from "firebase/analytics";
 
-// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDIt6qMLYYmIB68Ei1ajWRhfMdsqQEEqH8",
   authDomain: "clone-67520.firebaseapp.com",
@@ -19,23 +18,12 @@ const firebaseConfig = {
   measurementId: "G-MS4MGPJNYC",
 };
 
-// 🔥 1. Initialize Firebase FIRST
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 getAnalytics(app);
 
-// 🔥 2. Create auth AFTER app is created
 export const auth = getAuth(app);
-
-// 🔥 3. THEN set persistence
-setPersistence(auth, browserLocalPersistence)
-  .then(() => {
-    console.log("Auth persistence set to LOCAL");
-  })
-  .catch((error) => {
-    console.error("Persistence error:", error);
-  });
-
-// 🔥 4. Initialize Firestore
+setPersistence(auth, browserLocalPersistence); // persist login across sessions
 export const db = getFirestore(app);
 
 // // Import the functions you need from the SDKs you need

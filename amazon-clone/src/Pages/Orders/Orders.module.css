@@ -25,6 +25,31 @@
 .orders__container div {
   height: auto !important;
 }
+/* ================================ */
+/* Add to Cart button inside Orders page */
+.orders_add {
+  background-color: #f0c14b; /* Amazon-style yellow */
+  border: 1px solid #a88734;
+  color: #111;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin-top: 8px;
+}
+
+.orders_add:hover {
+  background-color: #ddb347;
+  border-color: #9c7b30;
+}
+/* Orders page container adjustment */
+.orders__container > div {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 
 /* ==================== INLINE QTY + ADD TO CART ==================== */
 .qty-add {
