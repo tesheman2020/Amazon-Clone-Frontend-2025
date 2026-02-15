@@ -65,7 +65,10 @@ function Orders() {
                       Qty: {item.amount} | Subtotal:{" "}
                       {formatCurrency(item.price * item.amount)}
                     </p>
-                    <button onClick={() => addToCartSingle(item)}>
+                    <button
+                      className={classes.orders_add}
+                       onClick={() => addToCartSingle(item)}
+                    >
                       Add to Cart
                     </button>
                   </div>

@@ -1,21 +1,23 @@
-/* Existing Orders CSS */
+
+
+
+
+/* ==================== PAGE CONTAINER ==================== */
 .container {
   background-color: #efeeee;
   padding: 30px;
 }
 
 .orders__container {
-  background-color: #fff;
+  background-color: #ffffff;
   padding: 20px;
+  border-radius: 8px;
 }
 
 .orders__container h2 {
-  border-bottom: 2px solid var(--primary-shade);
-  padding: 20px;
-}
-
-.orders__container p {
-  padding: 12px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .orders__container img {
@@ -25,110 +27,40 @@
 .orders__container div {
   height: auto !important;
 }
-/* ================================ */
-/* Add to Cart button inside Orders page */
-.orders_add {
-  background-color: #f0c14b; /* Amazon-style yellow */
-  border: 1px solid #a88734;
-  color: #111;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  margin-top: 8px;
+
+/* ==================== EACH ORDER ==================== */
+.order {
+  margin-bottom: 30px;
 }
 
-.orders_add:hover {
-  background-color: #ddb347;
-  border-color: #9c7b30;
-}
-/* Orders page container adjustment */
-.orders__container > div {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.order p {
+  margin: 8px 0;
 }
 
-
-/* ==================== INLINE QTY + ADD TO CART ==================== */
-.qty-add {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-left: auto;
-}
-
-.qty-add input[type="number"] {
-  width: 60px;        /* Decreased width */
-  height: 35px;       /* Increased height */
-  padding: 5px 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  text-align: center;
-}
-
-.qty-add button {
-  padding: 8px 14px;
-  border: none;
-  border-radius: 30px;
-  background-color: var(--primary-color);
-  color: #fff;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.2s ease;
-}
-
-.qty-add button:hover {
-  background-color: var(--primary-shade);
-  transform: scale(1.03);
-}
-
-.subtotal-text {
-  font-size: 14px;
-  margin-left: 10px;
-}
-
-.order-total {
-  text-align: right;
-  margin-top: 10px;
-}
-
-/* Add to Cart button in orders page */
-.add_to_cart_orders {
-  background-color: #ff9900; /* Amazon-style orange */
-  color: #fff;
-  border: none;
-  padding: 6px 14px;
-  border-radius: 30px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.2s ease;
-}
-/* Add to Cart button styling in Orders page */
+/* ==================== ADD TO CART BUTTON ==================== */
 .orders_add {
   display: inline-block;
   padding: 10px 20px;
   margin-top: 8px;
-  background-color: var(--primary-color);
-  color: #fff;
+  background-color: #f0c14b;
+  border: 1px solid #a88734;
+  color: #111;
   font-weight: 700;
   border-radius: 30px;
-  border: none;
   cursor: pointer;
-  transition: 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .orders_add:hover {
-  background-color: var(--primary-shade);
-  color: #ff7950;
-  transform: scale(1.03);
+  background-color: #ddb347;
+  transform: scale(1.05);
 }
 
-.add_to_cart_orders:hover {
-  background-color: #f08804; /* slightly darker on hover */
-  transform: scale(1.03);
+/* ==================== ORDER TOTAL ==================== */
+.order h3 {
+  text-align: right;
+  margin-top: 15px;
+  font-size: 18px;
 }
 
 /* ==================== MOBILE RESPONSIVE ==================== */
@@ -138,37 +70,15 @@
   }
 
   .orders__container {
-    padding: 12px;
-  }
-
-  .orders__container h2 {
-    padding: 10px;
-    font-size: 18px;
-  }
-
-  .orders__container p {
-    padding: 8px;
-    font-size: 14px;
+    padding: 15px;
   }
 
   .orders__container img {
     width: 70px !important;
   }
 
-  /* Adjust inline qty + button for small screens */
-  .qty-add {
-    gap: 5px;
-  }
-
-  .qty-add input[type="number"] {
-    width: 50px;
-    height: 30px;
-    font-size: 14px;
-  }
-
-  .qty-add button {
-    padding: 6px 12px;
-    font-size: 14px;
+  .orders_add {
+    width: 100%;
+    text-align: center;
   }
 }
-
