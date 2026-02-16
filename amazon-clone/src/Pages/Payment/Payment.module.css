@@ -10,6 +10,8 @@
 .payment {
   padding: 30px;
 }
+
+/* Basket items layout */
 .flex {
   display: flex;
   gap: 20px;
@@ -24,10 +26,14 @@
 .flex div {
   height: auto !important;
 }
+
+/* Card container */
 .payment__card__container {
   max-width: 350px;
   width: 100%;
 }
+
+/* Price summary */
 .payment__price {
   padding: 20px;
 }
@@ -36,43 +42,54 @@
   font-size: 16px;
   gap: 10px;
 }
+
+/* ========================================================= */
+/* Payment form & CardElement input */
+.payment__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center everything */
+  gap: 12px;
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+/* Stripe CardElement wrapper */
+.card_wrapper {
+  width: 100%;
+  background-color: #fff;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+/* Ensure iframe input is visible */
+.card_wrapper iframe {
+  height: 40px !important;
+}
+
+/* Error messages */
+.error {
+  color: #e63946;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* ========================================================= */
 /* Pay Now button */
-.pay_button {
-  background-color: #ff9900; /* Amazon-style orange */
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 30px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 16px;
-  transition: all 0.2s ease;
-  margin-top: 12px;
-}
-
-.pay_button:hover {
-  background-color: #f08804; /* slightly darker on hover */
-  transform: scale(1.03);
-}
-
-.pay_button:disabled {
-  background-color: #ffd699;
-  cursor: not-allowed;
-  transform: none;
-}
-/* ================================================= */
-
-/* Center Pay Now button */
 .pay_button {
   background-color: #f0c14b; /* Amazon-style yellow */
   border: 1px solid #a88734;
   color: #111;
   padding: 12px 24px;
-  border-radius: 4px;
+  border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
-  margin: 20px auto 0 auto; /* Center horizontally */
-  display: block; /* Important for centering */
+  margin: 12px auto 0 auto; /* center horizontally */
+  display: block;
   transition: all 0.2s ease-in-out;
 }
 
@@ -80,92 +97,6 @@
   background-color: #ddb347;
   border-color: #9c7b30;
 }
-.payment__form {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center form elements */
-  gap: 12px;
-}
-/* ======================================================== */
-.payment__details button {
-  margin-top: 15px;
-  width: 100%;
-  border: none;
-  background-color: var(--primary-color);
-  border-radius: 5px;
-  padding: 8px 10px;
-  cursor: pointer;
-}
-.payment__details button:hover {
-  background-color: var(--primary-shade);
-}
-
-@media screen and (max-width: 768px) {
-  .flex {
-    flex-direction: column;
-  }
-}
-
-
-
-
-
-
-
-/* 
-.payment__header {
-  padding: 20px;
-  text-align: center;
-  font-size: 24px;
-  background-color: antiquewhite;
-}
-
-.payment {
-  padding: 30px;
-}
-.flex {
-  display: flex;
-  gap: 20px;
-  padding: 30px;
-}
-.flex h3 {
-  min-width: 300px;
-}
-.flex img {
-  width: 80px !important;
-}
-.flex div {
-  height: auto !important;
-}
-.payment__card__container {
-  max-width: 350px;
-  width: 100%;
-}
-.payment__price {
-  padding: 20px;
-}
-.payment__price > div {
-  display: flex;
-  font-size: 16px;
-  gap: 10px;
-}
-/* Pay Now button */
-/* .pay_button {
-  background-color: #ff9900;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 30px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 16px;
-  transition: all 0.2s ease;
-  margin-top: 12px;
-}
-
-.pay_button:hover {
-  background-color: #f08804; 
-  transform: scale(1.03);
-}
 
 .pay_button:disabled {
   background-color: #ffd699;
@@ -173,8 +104,9 @@
   transform: none;
 }
 
-
-.payment__details button {
+/* ========================================================= */
+/* Other buttons in payment details */
+.payment__details button:not(.pay_button) {
   margin-top: 15px;
   width: 100%;
   border: none;
@@ -187,17 +119,9 @@
   background-color: var(--primary-shade);
 }
 
+/* ================= Responsive ================= */
 @media screen and (max-width: 768px) {
   .flex {
     flex-direction: column;
   }
-} */
-
- 
-
-
-
-
-
-
-
+}
